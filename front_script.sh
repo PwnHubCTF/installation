@@ -57,6 +57,7 @@ export MYSQL_DATABASE=pwnme
 export JWT_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 
 cd PownCTF
+cp .env.example .env >/dev/null 2>&1
 docker-compose up -d >/dev/null 2>&1
 
 #Install nginx
