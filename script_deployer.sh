@@ -67,7 +67,7 @@ export DB_NAME=deployer
 export REDIS_URL=redis://redis:6379
 
 cd deployer
-docker compose up -d
+docker compose up -d --build
 echo -e "${GREEN}#################################################"
 echo -e "# TOKEN  : ${SECRET_TOKEN}  #"
 echo -e "#################################################${NC}"
