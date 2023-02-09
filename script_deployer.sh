@@ -46,7 +46,7 @@ sudo chmod +x /usr/local/bin/docker-compose > /dev/null 2>&1
 
 #Clone repo
 echo -e "${GREEN}[+] Clonage des repository${NC}"
-git clone https://Eteckq:$token@github.com/PwnHubCTF/deployer.git > /dev/null 2>&1
+git clone https://$token@github.com/PwnHubCTF/deployer.git > /dev/null 2>&1
 
 #Set les variables d'environnements
 # CONFIG
