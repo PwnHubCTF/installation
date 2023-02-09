@@ -11,3 +11,10 @@
 default user: **Can't be changed for now**
 `2600`
 `betatester`
+
+  ## Usage of script_deployer.sh
+
+./script_deployer.sh -t <token> -d <domain>
+
+- token: GithubUsername:GithubToken, ex Foobar:ghp_dsq5F6ug775zHjif975
+- domain: url or ip of the server, ex 56.43.32.55
