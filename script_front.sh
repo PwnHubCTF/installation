@@ -12,7 +12,7 @@ while [ "$#" -gt 0 ]; do
     -t|--token) token="$2"; shift 2;;
     -d|--domain) domain="$2"; shift 2;;
     -p|--protected) protected=1; shift;;
-    *) echo "Usage: ./script.sh -t <token> -d <domain>"; exit 1;;
+    *) echo "Usage: ./script.sh -t <token> -d <domain> [-p]"; exit 1;;
   esac
 done
 
@@ -48,7 +48,7 @@ sudo chmod +x /usr/local/bin/docker-compose > /dev/null 2>&1
 
 #Clone repo
 echo -e "${GREEN}[+] Clonage des repository${NC}"
-git clone https://Eteckq:$token@github.com/PwnHubCTF/PownCTF.git > /dev/null 2>&1
+git clone https://$token@github.com/PwnHubCTF/PownCTF.git > /dev/null 2>&1
 
 #Set les variables d'environnements
 export DB_HOST=db
@@ -57,6 +57,11 @@ export MYSQL_USER=user
 export MYSQL_PASSWORD=root
 export MYSQL_DATABASE=pwnme
 export JWT_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
+if [ $protected -eq 1 ]; then
+  export BASIC_ENABLED='true'
+else
+  export BASIC_ENABLED='false'
+fi
 
 cd PownCTF
 cp .env.example .env >/dev/null 2>&1
@@ -66,14 +71,6 @@ docker-compose up -d --build
 echo -e "${GREEN}[+] install nginx${NC}"
 apt-get install -y nginx > /dev/null 2>&1
 unlink /etc/nginx/sites-enabled/default > /dev/null 2>&1
-
-if [ $protected -eq 1 ]; then
-  RESTRICTED='auth_basic "Restricted";'
-  AUTH_BASIC="auth_basic_user_file /etc/nginx/conf.d/.htpasswd;"
-else
-  RESTRICTED=''
-  AUTH_BASIC=''
-fi
 
 echo -e "${GREEN}[+] install setup reverse proxy${NC}"
 cat << EOF > /etc/nginx/sites-enabled/reverse-proxy.conf
@@ -87,14 +84,8 @@ server{
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection "upgrade";
-	$RESTRICTED
-        $AUTH_BASIC
     }
 }
-EOF
-
-cat << EOF > /etc/nginx/conf.d/.htpasswd
-2600:\$apr1\$8d3wFfze\$wMNMbO1TjcCZGaMNCNBTR/
 EOF
 
 echo -e "${GREEN}[+] Install certbot${NC}"
