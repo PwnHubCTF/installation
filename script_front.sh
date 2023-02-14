@@ -51,6 +51,7 @@ echo -e "${GREEN}[+] Clonage des repository${NC}"
 git clone https://$token@github.com/PwnHubCTF/PownCTF.git > /dev/null 2>&1
 
 #Set les variables d'environnements
+export PRODUCTION=true
 export DB_HOST=db
 export API_URL=api
 export MYSQL_USER=user
