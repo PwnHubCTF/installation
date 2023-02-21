@@ -10,7 +10,7 @@
 
 default user: **Can't be changed for now**
 `2600`
-`betatester`
+`54F5d2emPdFUCKLESJALOUXd1rD11fmlf`
 
   ## Usage of script_deployer.sh
 
