@@ -70,5 +70,6 @@ export REDIS_URL=redis://redis:6379
 cd deployer
 docker compose up -d --build
 echo -e "${GREEN}#################################################"
+echo -e "# APP is running on port ${APP_PORT}             #"
 echo -e "# TOKEN  : ${SECRET_TOKEN}  #"
 echo -e "#################################################${NC}"
