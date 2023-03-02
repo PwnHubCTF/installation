@@ -46,8 +46,9 @@ git clone https://$token@github.com/PwnHubCTF/xss_bot.git > /dev/null 2>&1
 export PORT=8090
 export BOT_TOKEN=`echo -n $(md5sum <<< $(cat /proc/sys/kernel/random/uuid) |awk '{print $1}')`
 
-cd deployer
+cd xss_bot
 docker compose up -d --build
 echo -e "${GREEN}#################################################"
+echo -e "# APP is running on port ${PORT}             #"
 echo -e "# TOKEN  : ${BOT_TOKEN}  #"
 echo -e "#################################################${NC}"
