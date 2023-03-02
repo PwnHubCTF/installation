@@ -18,3 +18,13 @@ default user: **Can't be changed for now**
 
 - token: GithubUsername:GithubToken, ex Foobar:ghp_dsq5F6ug775zHjif975
 - domain: url or ip of the server, ex 56.43.32.55
+
+> At the end of installation, there is a token printed. You need to save, and set it in the ctf config
+
+  ## Usage of script_bot-xss.sh
+
+`./script_bot-xss.sh -t <token>`
+
+- token: GithubUsername:GithubToken, ex Foobar:ghp_dsq5F6ug775zHjif975
+
+> At the end of installation, there is a token printed. You need to save, and set it in the ctf config
