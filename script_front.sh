@@ -61,6 +61,8 @@ export JWT_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 export SIGNED_FLAG_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 if [ $protected -eq 1 ]; then
   export BASIC_ENABLED='true'
+  export BASIC_USER='2600'
+  export BASIC_PASSWORD='54F5d2emPdFUCKLESJALOUXd1rD11fmlf'
 else
   export BASIC_ENABLED='false'
 fi
