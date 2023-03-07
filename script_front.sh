@@ -62,7 +62,7 @@ export SIGNED_FLAG_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 if [ $protected -eq 1 ]; then
   export BASIC_ENABLED='true'
   export BASIC_USER='pwnhub'
-  export BASIC_PASSWORD=`cat /proc/sys/kernel/random/uuid | md5sum`
+  export BASIC_PASSWORD=`echo -n $(md5sum <<< $(cat /proc/sys/kernel/random/uuid) |awk '{print $1}')`
 else
   export BASIC_ENABLED='false'
 fi
