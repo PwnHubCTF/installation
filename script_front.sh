@@ -61,8 +61,8 @@ export JWT_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 export SIGNED_FLAG_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 if [ $protected -eq 1 ]; then
   export BASIC_ENABLED='true'
-  export BASIC_USER='2600'
-  export BASIC_PASSWORD='54F5d2emPdFUCKLESJALOUXd1rD11fmlf'
+  export BASIC_USER='pwnhub'
+  export BASIC_PASSWORD=`cat /proc/sys/kernel/random/uuid | md5sum`
 else
   export BASIC_ENABLED='false'
 fi
@@ -100,3 +100,9 @@ certbot --nginx -d $domain --non-interactive --agree-tos -m webmaster@email.com 
 
 service nginx restart > /dev/null 2>&1
 echo -e "${GREEN}[+] Done${NC}"
+
+if [ $protected -eq 1 ]; then
+  echo -e "${GREEN}#################################################"
+  echo -e "# BASIC Password : ${BASIC_PASSWORD}  #"
+  echo -e "#################################################${NC}"
+fi
