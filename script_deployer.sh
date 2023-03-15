@@ -55,7 +55,6 @@ export APP_PORT=3000
 export SECRET_TOKEN=`echo -n $(md5sum <<< $(cat /proc/sys/kernel/random/uuid) |awk '{print $1}')`
 export GITHUB_TOKEN=$token
 export SERVER_URL=$domain
-export INSTANCES_LIMIT=4
 
 # DATABASE
 export DB_HOST=bdd
