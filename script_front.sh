@@ -71,7 +71,7 @@ fi
 
 cd PownCTF
 cp .env.example .env >/dev/null 2>&1
-docker-compose up -d --build
+docker-compose up -d --build >/dev/null 2>&1
 
 #Install nginx
 echo -e "${GREEN}[+] install nginx${NC}"
