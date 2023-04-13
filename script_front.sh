@@ -57,6 +57,7 @@ export API_URL=api
 export MYSQL_USER=user
 export MYSQL_PASSWORD=root
 export MYSQL_DATABASE=pwnme
+export DOMAIN=$domain
 export JWT_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 export SIGNED_FLAG_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 if [ $protected -eq 1 ]; then
