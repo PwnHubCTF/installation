@@ -11,8 +11,8 @@ while [ "$#" -gt 0 ]; do
   case "$1" in
     -t|--token) token="$2"; shift 2;;
     -d|--domain) domain="$2"; shift 2;;
-    -p|--protected) protected=1; shift;;
-    *) echo "Usage: ./script.sh -t <token> -d <domain> [-p]"; exit 1;;
+    -p|--protected) protected=1; basicPassword="$2"; shift 2;;
+    *) echo "Usage: ./script.sh -t <token> -d <domain> [-p] password"; exit 1;;
   esac
 done
 
@@ -64,7 +64,7 @@ export SIGNED_FLAG_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 if [ $protected -eq 1 ]; then
   export BASIC_ENABLED='true'
   export BASIC_USER='pwnhub'
-  export BASIC_PASSWORD=`echo -n $(md5sum <<< $(cat /proc/sys/kernel/random/uuid) |awk '{print $1}')`
+  export BASIC_PASSWORD=$basicPassword
 else
   export BASIC_ENABLED='false'
 fi
