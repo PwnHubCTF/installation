@@ -9,16 +9,15 @@ protected=0
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
-    -t|--token) token="$2"; shift 2;;
     -d|--domain) domain="$2"; shift 2;;
     -p|--protected) protected=1; basicPassword="$2"; shift 2;;
-    *) echo "Usage: ./script.sh -t <token> -d <domain> [-p] password"; exit 1;;
+    *) echo "Usage: ./script.sh -d <domain> [-p] password"; exit 1;;
   esac
 done
 
-if [ -z "$token" ] || [ -z "$domain" ]; then
-  echo -e "${YELLOW}Les deux arguements sont requis"
-  echo -e "Usage: ./script.sh -t <token> -d <domain>${NC}"
+if [ -z "$domain" ]; then
+  echo -e "${YELLOW}Le domaine est requis"
+  echo -e "Usage: ./script.sh -d <domain> [-p] password${NC}"
   exit 1
 fi
 apt-get update > /dev/null 2>&1
@@ -48,7 +47,7 @@ sudo chmod +x /usr/local/bin/docker-compose > /dev/null 2>&1
 
 #Clone repo
 echo -e "${GREEN}[+] Clonage des repository${NC}"
-git clone https://$token@github.com/PwnHubCTF/PownCTF.git > /dev/null 2>&1
+git clone https://github.com/PwnHubCTF/PownCTF.git > /dev/null 2>&1
 
 #Set les variables d'environnements
 export PRODUCTION=true
