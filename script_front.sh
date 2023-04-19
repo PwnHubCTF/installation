@@ -57,7 +57,6 @@ export MYSQL_USER=user
 export MYSQL_PASSWORD=root
 export MYSQL_DATABASE=pwnme
 export DOMAIN=$domain
-export MAIL_TRANSPORT=smtps://user@domain.com:pass@smtp.domain.com
 # To modify if you want the password forgot feature
 export SMTP_EMAIL=user@domain.com
 export SMTP_PASSWORD=pass
