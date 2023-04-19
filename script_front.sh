@@ -58,6 +58,11 @@ export MYSQL_PASSWORD=root
 export MYSQL_DATABASE=pwnme
 export DOMAIN=$domain
 export MAIL_TRANSPORT=smtps://user@domain.com:pass@smtp.domain.com
+# To modify if you want the password forgot feature
+export SMTP_EMAIL=user@domain.com
+export SMTP_PASSWORD=pass
+export SMTP_DOMAIN=smtp.domain.com
+# End of SMTP Config
 export JWT_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 export SIGNED_FLAG_SECRET=`cat /proc/sys/kernel/random/uuid | md5sum`
 if [ $protected -eq 1 ]; then
